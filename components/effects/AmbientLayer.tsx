@@ -18,7 +18,7 @@ type Petal = {
 
 type Mote = { x: number; y: number; r: number; vx: number; vy: number; phase: number };
 
-const PETAL_COLORS = ["#fffdfc", "#f4dad6", "#f3e6d3", "#fbeee9"];
+const PETAL_COLORS = ["#ead8cc", "#d4af7a", "#c98a93", "#f8f2ea"];
 
 /**
  * Page-wide ambience, drawn on one canvas for a steady 60fps:

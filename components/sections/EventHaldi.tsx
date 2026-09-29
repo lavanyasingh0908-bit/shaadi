@@ -16,28 +16,51 @@ function ClayPot({ className = "" }: { className?: string }) {
   );
 }
 
+/** Pink five-petal bloom with dark green leaves, for the card's corners. */
+function Bloom({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 120" className={className} aria-hidden>
+      <path d="M60 64c-22 4-40 22-44 44 22-2 40-18 44-44z" fill="#2E7D4F" opacity="0.85" />
+      <path d="M62 62c20-10 44-6 54 10-20 10-42 6-54-10z" fill="#1F5A3A" opacity="0.8" />
+      {[0, 72, 144, 216, 288].map((r) => (
+        <ellipse key={r} cx="60" cy="38" rx="14" ry="22" fill="#E0568A" opacity="0.9" transform={`rotate(${r} 60 60)`} />
+      ))}
+      {[36, 108, 180, 252, 324].map((r) => (
+        <ellipse key={r} cx="60" cy="44" rx="9" ry="15" fill="#F48FB1" transform={`rotate(${r} 60 60)`} />
+      ))}
+      <circle cx="60" cy="60" r="9" fill="#F2A33A" />
+      <circle cx="60" cy="60" r="4" fill="#C9721C" />
+    </svg>
+  );
+}
+
 export default function EventHaldi() {
   return (
     <section
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-24 text-center"
-      style={{ background: "linear-gradient(170deg,#FFF6DE 0%,#FCE9B8 45%,#F4DAD6 100%)" }}
+      style={{ background: "linear-gradient(170deg,#fff6d9 0%,#fde9a8 40%,#f9d77e 75%,#f3c35e 100%)" }}
     >
       {/* soft watercolour splashes */}
-      <div aria-hidden className="watercolor-splash pointer-events-none absolute -left-[15%] top-[8%] h-[55vw] max-h-[520px] w-[55vw] max-w-[520px]" style={{ background: "radial-gradient(closest-side, rgba(240,185,79,0.35), rgba(240,185,79,0.12) 60%, transparent)" }} />
-      <div aria-hidden className="watercolor-splash pointer-events-none absolute -right-[12%] bottom-[6%] h-[50vw] max-h-[480px] w-[50vw] max-w-[480px]" style={{ background: "radial-gradient(closest-side, rgba(233,150,140,0.3), rgba(244,218,214,0.15) 60%, transparent)", animationDelay: "-6s" }} />
-      <Petals count={30} variant="marigold" />
+      <div aria-hidden className="watercolor-splash pointer-events-none absolute -left-[15%] top-[8%] h-[55vw] max-h-[520px] w-[55vw] max-w-[520px]" style={{ background: "radial-gradient(closest-side, rgba(255,255,255,0.55), rgba(255,255,255,0.18) 60%, transparent)" }} />
+      <div aria-hidden className="watercolor-splash pointer-events-none absolute -right-[12%] bottom-[6%] h-[50vw] max-h-[480px] w-[50vw] max-w-[480px]" style={{ background: "radial-gradient(closest-side, rgba(233,150,60,0.35), rgba(233,150,60,0.12) 60%, transparent)", animationDelay: "-6s" }} />
+      <Petals count={30} variant="haldi" />
+
+      {/* festive floral corners */}
+      <Bloom className="pointer-events-none absolute -left-6 -top-6 h-32 w-32 rotate-12 opacity-90 sm:h-48 sm:w-48" />
+      <Bloom className="pointer-events-none absolute -right-8 -top-4 h-24 w-24 -rotate-45 opacity-80 sm:h-36 sm:w-36" />
+      <Bloom className="pointer-events-none absolute -bottom-8 left-1/2 h-20 w-20 -translate-x-1/2 rotate-180 opacity-70 sm:h-28 sm:w-28" />
       {/* floating turmeric dust */}
-      <GoldParticles count={28} tint="232,166,60" />
+      <GoldParticles count={28} tint="200,140,40" />
 
       <motion.div
-        className="absolute left-[8%] bottom-10 text-champagne-dark/70"
+        className="absolute left-[8%] bottom-10 text-[#1F5A3A]/70"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
         <ClayPot className="h-16 w-16 sm:h-24 sm:w-24" />
       </motion.div>
       <motion.div
-        className="absolute right-[8%] bottom-16 text-champagne-dark/70"
+        className="absolute right-[8%] bottom-16 text-[#1F5A3A]/70"
         animate={{ y: [0, -14, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
       >
@@ -46,23 +69,30 @@ export default function EventHaldi() {
 
       <div className="relative z-10 flex flex-col items-center gap-5">
         <Reveal mode="scale">
-          <p className="font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">
-            Event One
-          </p>
+          <p className="font-hindi text-lg font-semibold tracking-[0.2em] sm:text-xl text-[#9A6A1C]">प्रथम उत्सव</p>
         </Reveal>
         <Reveal mode="fade-up" delay={0.15}>
-          <h2 className="font-bodoni text-4xl text-ink sm:text-6xl">{events.haldi.title}</h2>
+          <h2 className="font-bodoni text-3xl text-[#1F5A3A] sm:text-5xl">{events.haldi.title}</h2>
         </Reveal>
         <Reveal mode="fade" delay={0.35}>
-          <p className="font-script text-3xl text-champagne-dark sm:text-4xl">
+          <p
+            className="px-2 py-2 font-script text-6xl leading-[1.25] [filter:drop-shadow(0_2px_6px_rgba(255,255,255,0.6))] sm:text-8xl"
+            style={{
+              background: "linear-gradient(90deg,#1f5a3a 0%,#2e7d4f 30%,#e0568a 62%,#c2185b 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
             &ldquo;{events.haldi.line}&rdquo;
           </p>
         </Reveal>
         <Reveal mode="fade-up" delay={0.5}>
           <div className="mt-4 flex flex-col items-center gap-1">
-            <p className="font-serif-alt text-lg text-ink/80 sm:text-xl">{events.haldi.date}</p>
-            <p className="font-serif-alt text-base text-ink/60">{events.haldi.time}</p>
-            <p className="mt-2 font-detail text-sm uppercase tracking-[0.2em] text-ink/50">
+            <p className="font-serif-alt text-xl font-semibold text-[#1F5A3A] sm:text-2xl">{events.haldi.date}</p>
+            <p className="font-serif-alt text-lg font-semibold text-[#C2185B]">{events.haldi.time}</p>
+            <span className="my-2 h-px w-20 bg-gradient-to-r from-transparent via-[#E0568A] to-transparent" />
+            <p className="font-detail text-sm font-medium uppercase tracking-[0.2em] text-[#1F5A3A]">
               {events.haldi.venue}
             </p>
           </div>

@@ -118,18 +118,18 @@ export default function EventBaraat() {
     <section
       ref={sectionRef}
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden px-6 pb-40 pt-24 text-center"
-      style={{ background: "linear-gradient(180deg,#FFFDFC 0%,#FAF6F0 45%,#EFE2C9 100%)" }}
+      style={{ background: "linear-gradient(180deg,#8c3a4a 0%,#722f45 30%,#5a1e2b 65%,#3b0f1f 100%)" }}
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 50% 28%, rgba(214,180,122,0.20), transparent 55%)",
+            "radial-gradient(circle at 50% 28%, rgba(212,175,122,0.14), transparent 55%)",
         }}
       />
 
       {/* subtle horse silhouette watermark */}
-      <Horse className="pointer-events-none absolute left-1/2 top-1/2 h-[48vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 text-champagne opacity-[0.05]" />
+      <Horse className="pointer-events-none absolute left-1/2 top-1/2 h-[48vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 text-champagne opacity-[0.08]" />
 
       {/* dhol & shehnai, visual only */}
       <DholBeat className="left-[8%] top-[22%]" />
@@ -164,35 +164,36 @@ export default function EventBaraat() {
         </div>
 
         <Reveal mode="scale">
-          <p className="font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">Event Three</p>
+          <p className="font-hindi text-lg font-semibold tracking-[0.2em] sm:text-xl text-champagne">तृतीय उत्सव</p>
         </Reveal>
 
         <Reveal mode="blur" duration={1.2} delay={0.1}>
+          <p className="gold-shimmer-text animate-shimmer mb-1 font-royal text-6xl leading-[1.35] sm:text-8xl">शाही सवारी</p>
           <h2 className="gold-shimmer-text animate-shimmer font-hindi text-5xl font-semibold leading-tight sm:text-7xl">
             {b.title}
           </h2>
         </Reveal>
         <Reveal mode="fade" delay={0.3}>
-          <p className="font-hindi text-lg text-ink/80 sm:text-xl">{b.date}</p>
+          <p className="font-hindi text-lg text-ink/90 sm:text-xl">{b.date}</p>
         </Reveal>
 
         <Reveal mode="fade-up" delay={0.45}>
           <div className="flex items-center gap-6 sm:gap-10">
             <div>
-              <p className="font-hindi text-sm font-semibold text-champagne-dark">प्रस्थान</p>
-              <p className="font-serif-alt text-lg text-ink/80 sm:text-xl">{b.departure}</p>
+              <p className="font-hindi text-base font-semibold text-champagne-dark">प्रस्थान</p>
+              <p className="font-serif-alt text-lg text-ink/90 sm:text-xl">{b.departure}</p>
             </div>
             <div className="h-10 w-px bg-champagne/50" />
             <div>
-              <p className="font-hindi text-sm font-semibold text-champagne-dark">आगमन</p>
-              <p className="font-serif-alt text-lg text-ink/80 sm:text-xl">{b.arrival}</p>
+              <p className="font-hindi text-base font-semibold text-champagne-dark">आगमन</p>
+              <p className="font-serif-alt text-lg text-ink/90 sm:text-xl">{b.arrival}</p>
             </div>
           </div>
         </Reveal>
 
         {/* route: Fun O Farm → Heaven's Feel Farm */}
         <Reveal mode="fade-up" delay={0.6} className="w-full max-w-md">
-          <p className="font-hindi text-sm font-semibold text-champagne-dark">स्थान</p>
+          <p className="font-hindi text-base font-semibold text-champagne-dark">स्थान</p>
           <div className="relative mt-2 w-full">
             <svg viewBox="0 0 400 100" className="h-auto w-full text-champagne" fill="none" aria-hidden>
               <path d={ROUTE} stroke="currentColor" strokeWidth="1" strokeDasharray="3 6" opacity="0.35" />
@@ -225,17 +226,17 @@ export default function EventBaraat() {
           </div>
           <div className="mt-1 flex items-center justify-between gap-4">
             <p className="font-display text-xl text-ink sm:text-2xl">{b.from}</p>
-            <p className="font-hindi text-sm text-ink/60">से</p>
+            <p className="font-hindi text-base text-ink/90">से</p>
             <p className="font-display text-xl text-ink sm:text-2xl">{b.to}</p>
           </div>
-          <p className="mt-3 font-detail text-xs uppercase tracking-[0.2em] text-ink/50">{b.address}</p>
+          <p className="mt-3 font-detail text-sm uppercase tracking-[0.2em] text-blush">{b.address}</p>
         </Reveal>
       </div>
 
       {/* horse procession strolling across the bottom */}
       <div className="pointer-events-none absolute inset-x-0 bottom-6 h-20 overflow-hidden sm:h-24" aria-hidden>
         <div className="gold-divider absolute inset-x-0 bottom-1" />
-        <div className="baraat-procession absolute bottom-1 flex items-end gap-3 text-champagne-dark/60">
+        <div className="baraat-procession absolute bottom-1 flex items-end gap-3 text-champagne-dark/85">
           <Walker dhol className="h-9 w-5 sm:h-11 sm:w-6" />
           <Walker className="h-9 w-5 sm:h-11 sm:w-6" />
           <Umbrella className="h-12 w-8 sm:h-14 sm:w-10" />

@@ -4,12 +4,20 @@ import { music } from "@/lib/weddingData";
 
 type Listener = () => void;
 
+const GESTURES = ["click", "touchend", "keydown"] as const;
+
 /**
- * One shared audio pipeline for the whole page:
- *   <audio> -> GainNode (smooth volume fades, works on iOS too) -> Analyser -> speakers
+ * Owns the page's single HTMLAudioElement. It lives outside React, so
+ * scrolling, re-renders and section mounts never interrupt playback.
  *
- * The AudioContext is only created inside the "Open Invitation" tap, so
- * nothing ever plays before the guest asks for it.
+ * Nothing is created or played until the "Open Invitation" tap, which calls
+ * play() synchronously inside the click so mobile browsers (Android Chrome,
+ * iOS Safari, WhatsApp / Instagram in-app browsers) unlock audio.
+ *
+ * On desktop the audio is also routed through Web Audio
+ * (<audio> -> GainNode -> Analyser -> speakers) for smooth fades and the
+ * equalizer. Phones skip that: a suspended AudioContext silences the song in
+ * some in-app WebViews, and iOS mutes Web Audio on the silent switch.
  */
 class MusicEngine {
   private audio: HTMLAudioElement | null = null;
@@ -19,23 +27,42 @@ class MusicEngine {
   private bins: Uint8Array<ArrayBuffer> | null = null;
   private listeners = new Set<Listener>();
   private fadeRaf = 0;
+  private awaitingGesture = false;
 
+  /** True while the song is actually playing. */
   playing = false;
+  /** True when the last play() was refused — UI shows a "tap to play" hint. */
+  blocked = false;
 
-  attach(audio: HTMLAudioElement) {
-    if (this.audio === audio) return;
-    this.audio = audio;
-    audio.addEventListener("play", this.sync);
+  /** Creates (once) or returns the one and only audio element. */
+  private element(): HTMLAudioElement | null {
+    if (this.audio) return this.audio;
+    if (typeof window === "undefined") return null;
+    const audio = new Audio();
+    audio.preload = "metadata";
+    audio.loop = true;
+    audio.setAttribute("playsinline", "");
+    audio.src = music.src;
+    audio.addEventListener("playing", this.sync);
     audio.addEventListener("pause", this.sync);
+    audio.addEventListener("ended", this.sync);
+    this.audio = audio;
+    return audio;
   }
 
   private sync = () => {
     this.playing = !!this.audio && !this.audio.paused;
-    this.listeners.forEach((fn) => fn());
+    if (this.playing) this.blocked = false;
+    this.emit();
   };
+
+  private emit() {
+    this.listeners.forEach((fn) => fn());
+  }
 
   private ensureGraph() {
     if (this.ctx || !this.audio) return;
+    if (!window.matchMedia?.("(hover: hover) and (pointer: fine)").matches) return;
     try {
       const Ctx =
         window.AudioContext ||
@@ -56,21 +83,69 @@ class MusicEngine {
     }
   }
 
-  /** Must be called from inside a user gesture (tap / click). */
-  play() {
-    const audio = this.audio;
+  /**
+   * Must be called synchronously from inside a user gesture (tap / click).
+   * If the browser still refuses, `blocked` is set (toast) and the next tap
+   * anywhere on the page retries.
+   */
+  async play() {
+    const audio = this.element();
     if (!audio) return;
+    audio.loop = true;
+    // iOS 17+: play through the silent switch like a media app would.
+    const nav = navigator as Navigator & { audioSession?: { type: string } };
+    if (nav.audioSession) nav.audioSession.type = "playback";
     this.ensureGraph();
     this.ctx?.resume().catch(() => {});
-    audio.play().catch(() => {
-      // File missing or playback refused — the player button can retry.
-    });
+    try {
+      // play() is invoked before any await, so it stays inside the gesture.
+      await audio.play();
+      this.stopWaitingForGesture();
+      this.blocked = false;
+    } catch {
+      this.blocked = true;
+      this.waitForGesture();
+    }
+    this.sync();
+  }
+
+  pause() {
+    this.stopWaitingForGesture();
+    this.audio?.pause();
   }
 
   toggle() {
-    if (!this.audio) return;
-    if (this.audio.paused) this.play();
-    else this.audio.pause();
+    const audio = this.element();
+    if (!audio) return;
+    if (audio.paused) void this.play();
+    else this.pause();
+  }
+
+  /** Hides the "tap to play" hint without playing. */
+  dismissBlocked() {
+    if (!this.blocked) return;
+    this.blocked = false;
+    this.emit();
+  }
+
+  private onGesture = (e: Event) => {
+    // The music button handles its own tap via toggle().
+    if ((e.target as Element | null)?.closest?.("[data-music-toggle]")) return;
+    this.stopWaitingForGesture();
+    void this.play();
+  };
+
+  private waitForGesture() {
+    if (this.awaitingGesture) return;
+    this.awaitingGesture = true;
+    // Only activation-triggering events unlock audio (touch pointerdown doesn't).
+    for (const type of GESTURES) window.addEventListener(type, this.onGesture, { capture: true });
+  }
+
+  private stopWaitingForGesture() {
+    if (!this.awaitingGesture) return;
+    this.awaitingGesture = false;
+    for (const type of GESTURES) window.removeEventListener(type, this.onGesture, { capture: true });
   }
 
   /** Smoothly ramps volume to `level` (0–1) over `seconds`. */

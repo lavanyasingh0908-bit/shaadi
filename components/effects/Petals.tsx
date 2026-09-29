@@ -14,9 +14,10 @@ type Petal = {
 };
 
 const COLORS: Record<string, string[]> = {
-  marigold: ["#E8A63C", "#F0B94F", "#D68F2A"],
-  rose: ["#E9B7B0", "#F4DAD6", "#DDA39B"],
-  gold: ["#D6B47A", "#E8D3AB", "#B8935A"],
+  marigold: ["#D4AF7A", "#C89F66", "#E8D2A8"],
+  rose: ["#EAD8CC", "#C98A93", "#F8F2EA"],
+  gold: ["#D4AF7A", "#E8D2A8", "#B8935A"],
+  haldi: ["#E0568A", "#F48FB1", "#F2A33A", "#2E7D4F"],
 };
 
 export default function Petals({
@@ -26,7 +27,7 @@ export default function Petals({
   once = false,
 }: {
   count?: number;
-  variant?: "marigold" | "rose" | "gold";
+  variant?: "marigold" | "rose" | "gold" | "haldi";
   className?: string;
   /** Fall a single time (a shower) instead of looping forever. */
   once?: boolean;

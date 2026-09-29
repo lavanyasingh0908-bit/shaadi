@@ -22,6 +22,16 @@ function Sparkle({ className = "" }: { className?: string }) {
   );
 }
 
+// music notes drifting upward, like a dance floor in full swing
+const NOTES = [
+  { left: "8%", glyph: "♪", size: "text-3xl", delay: 0, duration: 7 },
+  { left: "22%", glyph: "♫", size: "text-2xl", delay: 2.4, duration: 8 },
+  { left: "38%", glyph: "♩", size: "text-xl", delay: 4.6, duration: 6.5 },
+  { left: "63%", glyph: "♬", size: "text-2xl", delay: 1.2, duration: 7.5 },
+  { left: "78%", glyph: "♪", size: "text-xl", delay: 3.5, duration: 6 },
+  { left: "90%", glyph: "♫", size: "text-3xl", delay: 5.2, duration: 8.5 },
+];
+
 const BULB_COUNT = 12;
 const BULBS = Array.from({ length: BULB_COUNT }, (_, i) => {
   const cx = Math.round(((400 / (BULB_COUNT - 1)) * i) * 100) / 100;
@@ -77,14 +87,36 @@ export default function EventSangeet() {
           <Sparkle className="h-full w-full" />
         </motion.span>
       ))}
+      {NOTES.map((n, i) => (
+        <motion.span
+          key={`note-${i}`}
+          aria-hidden
+          className={`pointer-events-none absolute bottom-0 ${n.size} text-champagne/70 drop-shadow-[0_0_6px_rgba(232,211,171,0.6)]`}
+          style={{ left: n.left }}
+          initial={{ y: 0, opacity: 0 }}
+          animate={{ y: ["0vh", "-85vh"], x: [0, 18, -14, 10, 0], opacity: [0, 0.9, 0.9, 0], rotate: [-10, 10, -10] }}
+          transition={{ duration: n.duration, repeat: Infinity, delay: n.delay, ease: "easeInOut" }}
+        >
+          {n.glyph}
+        </motion.span>
+      ))}
       <Equalizer className="absolute bottom-10 left-1/2 -translate-x-1/2" />
 
       <div className="relative z-10 flex flex-col items-center gap-6">
         <Reveal mode="scale">
-          <p className="font-detail text-xs uppercase tracking-[0.5em] text-champagne">Event Two</p>
+          <p className="font-hindi text-lg font-semibold tracking-[0.2em] sm:text-xl text-champagne">द्वितीय उत्सव</p>
         </Reveal>
         <Reveal mode="blur" duration={1.2} delay={0.1}>
-          <h2 className="font-bodoni text-4xl text-pearl sm:text-6xl">{events.sangeet.title}</h2>
+          <div className="flex flex-col items-center gap-1">
+            <h2 className="gold-shimmer-text animate-shimmer font-royal text-5xl leading-[1.35] sm:text-7xl">
+              नाच-ए-मोहब्बत
+            </h2>
+            <p className="flex items-center gap-3 font-script text-3xl text-champagne-light sm:text-4xl">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-champagne sm:w-12" aria-hidden />
+              {events.sangeet.title}
+              <span className="h-px w-8 bg-gradient-to-l from-transparent to-champagne sm:w-12" aria-hidden />
+            </p>
+          </div>
         </Reveal>
 
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 pt-2">
@@ -104,8 +136,8 @@ export default function EventSangeet() {
 
         <Reveal mode="fade-up" delay={1.6}>
           <div className="mt-4 flex flex-col items-center gap-1">
-            <p className="font-serif-alt text-lg text-pearl/85 sm:text-xl">{events.sangeet.date}</p>
-            <p className="font-serif-alt text-base text-pearl/60">{events.sangeet.time}</p>
+            <p className="font-serif-alt text-lg text-pearl/95 sm:text-xl">{events.sangeet.date}</p>
+            <p className="font-serif-alt text-base text-pearl/95">{events.sangeet.time}</p>
           </div>
         </Reveal>
       </div>

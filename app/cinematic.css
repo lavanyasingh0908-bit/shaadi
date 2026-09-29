@@ -42,6 +42,17 @@ html.lenis body {
     right: max(1.5rem, calc(env(safe-area-inset-right) + 0.5rem));
   }
 }
+/* "Tap the music icon" hint sits just under the music button. */
+.music-toast {
+  top: max(4.25rem, calc(env(safe-area-inset-top) + 3.75rem));
+  right: max(1rem, calc(env(safe-area-inset-right) + 0.5rem));
+}
+@media (min-width: 640px) {
+  .music-toast {
+    top: max(4.75rem, calc(env(safe-area-inset-top) + 3.75rem));
+    right: max(1.5rem, calc(env(safe-area-inset-right) + 0.5rem));
+  }
+}
 .scroll-lotus {
   right: max(0.35rem, env(safe-area-inset-right));
 }
@@ -73,8 +84,8 @@ button.safe-bottom {
   pointer-events: none;
   opacity: var(--page-lift);
   background:
-    linear-gradient(180deg, rgba(44, 36, 32, 0.22), rgba(44, 36, 32, 0.06) 35%, transparent),
-    linear-gradient(90deg, rgba(255, 253, 252, 0.2), transparent 12%, transparent 88%, rgba(44, 36, 32, 0.08));
+    linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08) 35%, transparent),
+    linear-gradient(90deg, rgba(212, 175, 122, 0.08), transparent 12%, transparent 88%, rgba(0, 0, 0, 0.12));
 }
 
 /* Ambient: drifting paper texture + occasional warm light leak. */
@@ -137,8 +148,8 @@ button.safe-bottom {
 .names-shimmer {
   border-radius: 9999px;
   background:
-    linear-gradient(100deg, transparent 25%, rgba(255, 246, 227, 0.9) 45%, rgba(232, 211, 171, 0.7) 55%, transparent 75%),
-    radial-gradient(ellipse at center, rgba(214, 180, 122, 0.35), transparent 70%);
+    linear-gradient(100deg, transparent 25%, rgba(212, 175, 122, 0.4) 45%, rgba(232, 210, 168, 0.3) 55%, transparent 75%),
+    radial-gradient(ellipse at center, rgba(140, 58, 74, 0.45), transparent 70%);
   background-size: 250% 100%, 100% 100%;
   filter: blur(18px);
   animation: names-shimmer 5s ease-in-out infinite;
@@ -232,7 +243,7 @@ button.safe-bottom {
   75% { background-position: -15px -10px; }
 }
 .vignette-breathe {
-  background: radial-gradient(ellipse at center, transparent 45%, rgba(10, 8, 6, 0.75) 100%);
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(26, 4, 10, 0.75) 100%);
   animation: vignette-breathe 10s ease-in-out infinite;
 }
 @keyframes vignette-breathe {

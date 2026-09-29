@@ -32,7 +32,7 @@ export default function EventWedding() {
     <section
       ref={sectionRef}
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden px-6 py-24 text-center"
-      style={{ background: "linear-gradient(180deg,#FAF6F0 0%,#F4DAD6 65%,#EEDFD5 100%)" }}
+      style={{ background: "linear-gradient(180deg,#3b0f1f 0%,#5a1e2b 35%,#722f45 70%,#8c3a4a 100%)" }}
     >
       {/* the couple, as a whisper-soft backdrop beneath the section's own palette */}
       <div data-parallax="0.12" className="pointer-events-none absolute inset-x-0 -inset-y-[8%]" aria-hidden>
@@ -40,7 +40,7 @@ export default function EventWedding() {
       </div>
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ background: "linear-gradient(180deg,rgba(250,246,240,0.55) 0%,rgba(244,218,214,0.35) 65%,rgba(238,223,213,0.7) 100%)" }}
+        style={{ background: "linear-gradient(180deg,rgba(59,15,31,0.55) 0%,rgba(90,30,43,0.35) 65%,rgba(140,58,74,0.6) 100%)" }}
       />
 
       {/* temple bell ripples */}
@@ -89,12 +89,22 @@ export default function EventWedding() {
 
       <div className="relative z-10 mt-6 flex flex-col items-center gap-5">
         <Reveal mode="scale">
-          <p className="font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">
-            Event Four
-          </p>
+          <p className="font-hindi text-lg font-semibold tracking-[0.2em] sm:text-xl text-champagne">चतुर्थ उत्सव</p>
         </Reveal>
         <Reveal mode="fade-up" delay={0.15}>
-          <h2 className="font-bodoni text-4xl text-ink sm:text-6xl">{events.wedding.title}</h2>
+          <h2 className="flex flex-col items-center gap-1 [filter:drop-shadow(0_2px_10px_rgba(0,0,0,0.35))]">
+            <span className="gold-shimmer-text flex items-baseline gap-3 leading-[1.3]">
+              <span className="font-hindi text-4xl font-semibold sm:text-6xl">शुभ</span>
+              <span className="font-brittany text-5xl sm:text-7xl">Aarambh</span>
+            </span>
+            <span className="flex items-center gap-3 text-champagne">
+              <span className="h-px w-10 bg-gradient-to-r from-transparent to-champagne sm:w-16" />
+              <span className="gold-shimmer-text font-hindi text-2xl font-medium tracking-[0.15em] sm:text-3xl">
+                {events.wedding.subtitle}
+              </span>
+              <span className="h-px w-10 bg-gradient-to-l from-transparent to-champagne sm:w-16" />
+            </span>
+          </h2>
         </Reveal>
         <Reveal mode="fade" delay={0.35}>
           <p className="font-script text-3xl text-champagne-dark sm:text-4xl">
@@ -103,9 +113,9 @@ export default function EventWedding() {
         </Reveal>
         <Reveal mode="fade-up" delay={0.5}>
           <div className="mt-4 flex flex-col items-center gap-1">
-            <p className="font-serif-alt text-lg text-ink/80 sm:text-xl">{events.wedding.date}</p>
-            <p className="font-serif-alt text-base text-ink/60">{events.wedding.time}</p>
-            <p className="mt-2 font-detail text-sm uppercase tracking-[0.2em] text-ink/50">
+            <p className="font-serif-alt text-lg text-ink/90 sm:text-xl">{events.wedding.date}</p>
+            <p className="font-serif-alt text-base text-ink/90">{events.wedding.time}</p>
+            <p className="mt-2 font-detail text-sm uppercase tracking-[0.2em] text-blush">
               {events.wedding.venue}
             </p>
           </div>

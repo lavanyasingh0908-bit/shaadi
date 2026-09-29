@@ -15,7 +15,7 @@ type Particle = {
 export default function GoldParticles({
   count = 30,
   className = "",
-  tint = "214,180,122",
+  tint = "212,175,122",
 }: {
   count?: number;
   className?: string;

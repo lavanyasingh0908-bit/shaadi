@@ -20,7 +20,7 @@ function StoryCard({ moment, index: i }: { moment: Moment; index: number }) {
   return (
     <motion.figure
       ref={ref}
-      className={`group relative flex w-[78vw] flex-none snap-center flex-col items-center gap-4 sm:w-[38vw] lg:w-[22vw] ${
+      className={`group relative flex w-[78vw] flex-none snap-center flex-col items-center sm:w-[38vw] lg:w-[22vw] ${
         i % 2 === 1 ? "lg:mt-16" : ""
       }`}
       initial={{ opacity: 0, filter: "blur(14px)", scale: 0.92 }}
@@ -28,7 +28,7 @@ function StoryCard({ moment, index: i }: { moment: Moment; index: number }) {
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 1.1, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="relative w-full overflow-hidden rounded-[1.4rem] border-4 border-pearl bg-ivory shadow-xl shadow-black/10 transition-[border-color,box-shadow] duration-700 group-hover:border-champagne-light group-hover:shadow-[0_18px_50px_-12px_rgba(169,127,69,0.45)]">
+      <div className="relative w-full overflow-hidden rounded-[1.4rem] border border-champagne/60 bg-wine shadow-xl shadow-black/30 transition-[border-color,box-shadow] duration-700 group-hover:border-champagne-light group-hover:shadow-[0_18px_50px_-12px_rgba(169,127,69,0.45)]">
         <div
           className={`story-film grain-hover relative w-full overflow-hidden ${
             moment.tall ? "aspect-[3/4]" : "aspect-[4/4.4]"
@@ -46,7 +46,6 @@ function StoryCard({ moment, index: i }: { moment: Moment; index: number }) {
           </motion.div>
         </div>
       </div>
-      <figcaption className="font-script text-3xl text-champagne-dark">{moment.caption}</figcaption>
     </motion.figure>
   );
 }
@@ -91,16 +90,13 @@ export default function LoveStory() {
     <section
       ref={sectionRef}
       data-no-lift
-      className="relative w-full overflow-hidden bg-blush py-24 lg:flex lg:h-[100svh] lg:flex-col lg:justify-center lg:py-0"
+      className="relative w-full overflow-hidden bg-luxe py-24 lg:flex lg:h-[100svh] lg:flex-col lg:justify-center lg:py-0"
     >
       <div className="px-6 text-center">
-        <Reveal mode="fade">
-          <p className="font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">
-            Our Story
-          </p>
-        </Reveal>
         <Reveal mode="fade-up" delay={0.15}>
-          <h2 className="mt-3 font-display text-3xl text-ink sm:text-5xl">A Love Story</h2>
+          <h2 className="gold-shimmer-text animate-shimmer mt-3 px-2 font-brittany text-5xl leading-[1.3] sm:text-7xl">
+            Our Love Story
+          </h2>
         </Reveal>
       </div>
 
@@ -113,7 +109,7 @@ export default function LoveStory() {
         ))}
       </div>
 
-      <p className="mt-2 text-center font-detail text-[10px] uppercase tracking-[0.3em] text-ink/40 lg:hidden">
+      <p className="mt-2 text-center font-detail text-xs uppercase tracking-[0.3em] text-ink/85 lg:hidden">
         Swipe to explore →
       </p>
     </section>

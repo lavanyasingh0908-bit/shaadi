@@ -1,16 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --color-ivory: #faf6f0;
-  --color-pearl: #fffdfc;
-  --color-champagne: #d6b47a;
-  --color-champagne-light: #e8d3ab;
-  --color-champagne-dark: #a97f45;
-  --color-blush: #f4dad6;
-  --color-beige: #eedfd5;
-  --color-ink: #2c2420;
-  --color-charcoal: #1a1410;
-  --color-charcoal-2: #241c16;
+  /* Royal maroon + champagne gold + ivory.
+     Surfaces (ivory/beige/blush tokens) are now the maroon family and "ink"
+     is soft ivory, so every section reads light-on-maroon. */
+  --color-ivory: #5a1e2b;          /* deep maroon — main background */
+  --color-beige: #722f45;          /* burgundy wine */
+  --color-blush: #ead8cc;          /* blush beige — small text / highlights */
+  --color-pearl: #f8f2ea;          /* soft ivory */
+  --color-champagne: #d4af7a;      /* champagne gold */
+  --color-champagne-light: #e8d2a8;
+  --color-champagne-dark: #c89f66; /* gold that still reads on maroon */
+  --color-ink: #f8f2ea;            /* main text: soft ivory */
+  --color-charcoal: #3b0f1f;
+  --color-charcoal-2: #5a1e2b;
+  --color-maroon: #5a1e2b;
+  --color-wine: #722f45;
+  --color-rosewood: #8c3a4a;
 }
 
 @theme inline {
@@ -24,6 +30,9 @@
   --color-ink: var(--color-ink);
   --color-charcoal: var(--color-charcoal);
   --color-charcoal-2: var(--color-charcoal-2);
+  --color-maroon: var(--color-maroon);
+  --color-wine: var(--color-wine);
+  --color-rosewood: var(--color-rosewood);
 
   /* Couple names: Great Vibes · headings: Cormorant Garamond · event titles:
      Bodoni Moda · Hindi & shlok: Noto Serif Devanagari · small details: DM Sans */
@@ -75,9 +84,14 @@ html {
 }
 
 body {
-  background: var(--color-ivory);
+  background: linear-gradient(180deg, #3b0f1f 0%, #5a1e2b 35%, #722f45 70%, #8c3a4a 100%) fixed #5a1e2b;
   color: var(--color-ink);
   overflow-x: hidden;
+  /* Cormorant is delicate at 400 — a touch heavier reads far better on
+     screens. Utilities like font-semibold still override this. */
+  font-weight: 500;
+  font-size: 1.0625rem;
+  text-rendering: optimizeLegibility;
 }
 
 .font-display { font-family: var(--font-display); }
@@ -86,13 +100,25 @@ body {
 .font-script { font-family: var(--font-script); }
 .font-hindi { font-family: var(--font-hindi); }
 .font-detail { font-family: var(--font-detail); }
+.font-royal { font-family: var(--font-royal), var(--font-hindi), serif; }
+
+/* Brittany Signature is a licensed font — drop the file into public/fonts/.
+   Falls back to Great Vibes until it's there. */
+@font-face {
+  font-family: "Brittany Signature";
+  src: url("/fonts/BrittanySignature.woff2") format("woff2"),
+    url("/fonts/BrittanySignature.otf") format("opentype"),
+    url("/fonts/BrittanySignature.ttf") format("truetype");
+  font-display: swap;
+}
+.font-brittany { font-family: "Brittany Signature", var(--font-script), cursive; }
 
 .gold-shimmer-text {
   background: linear-gradient(
     100deg,
     var(--color-champagne-dark) 20%,
     var(--color-champagne-light) 40%,
-    #fff6e3 50%,
+    #f8f2ea 50%,
     var(--color-champagne-light) 60%,
     var(--color-champagne-dark) 80%
   );
@@ -113,15 +139,33 @@ body {
   );
 }
 
+/* Luxury maroon gradient used by every full-bleed section. */
+.bg-luxe {
+  background: linear-gradient(180deg, #3b0f1f 0%, #5a1e2b 35%, #722f45 70%, #8c3a4a 100%);
+}
+.bg-luxe-reverse {
+  background: linear-gradient(180deg, #8c3a4a 0%, #722f45 30%, #5a1e2b 65%, #3b0f1f 100%);
+}
+
+/* Invitation card: thin champagne border, rounded, softly blurred wine. */
+.luxe-card {
+  background: rgba(114, 47, 69, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 122, 0.55);
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
+}
+
 .glass-panel {
-  background: rgba(255, 253, 252, 0.55);
+  background: rgba(90, 30, 43, 0.6);
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  border: 1px solid rgba(214, 180, 122, 0.35);
+  border: 1px solid rgba(212, 175, 122, 0.45);
 }
 
 .glass-panel-dark {
-  background: rgba(26, 20, 16, 0.45);
+  background: rgba(59, 15, 31, 0.55);
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
   border: 1px solid rgba(214, 180, 122, 0.28);

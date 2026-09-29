@@ -19,23 +19,23 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
   }, []);
 
   return (
-    <div className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ivory px-6 text-center">
+    <div className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-luxe px-6 text-center">
       {/* textured ivory background */}
       <div
         className="absolute inset-0 opacity-[0.5]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 20%, rgba(214,180,122,0.18), transparent 55%), radial-gradient(circle at 80% 75%, rgba(244,218,214,0.35), transparent 55%)",
+            "radial-gradient(circle at 20% 20%, rgba(212,175,122,0.16), transparent 55%), radial-gradient(circle at 80% 75%, rgba(140,58,74,0.35), transparent 55%)",
         }}
       />
       <LightRays opacity={0.5} />
       <Bokeh />
       <GoldParticles count={22} />
 
-      <VineCorner className="pointer-events-none absolute -left-4 -top-4 h-28 w-28 text-champagne/70 sm:h-40 sm:w-40" delay={0.2} />
-      <VineCorner className="pointer-events-none absolute -right-4 -top-4 h-28 w-28 rotate-90 text-champagne/70 sm:h-40 sm:w-40" delay={0.5} />
-      <VineCorner className="pointer-events-none absolute -bottom-4 -left-4 h-28 w-28 -rotate-90 text-champagne/70 sm:h-40 sm:w-40" delay={0.8} />
-      <VineCorner className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 rotate-180 text-champagne/70 sm:h-40 sm:w-40" delay={1.1} />
+      <VineCorner className="pointer-events-none absolute -left-4 -top-4 h-28 w-28 text-champagne opacity-25 sm:h-40 sm:w-40" delay={0.2} />
+      <VineCorner className="pointer-events-none absolute -right-4 -top-4 h-28 w-28 rotate-90 text-champagne opacity-25 sm:h-40 sm:w-40" delay={0.5} />
+      <VineCorner className="pointer-events-none absolute -bottom-4 -left-4 h-28 w-28 -rotate-90 text-champagne opacity-25 sm:h-40 sm:w-40" delay={0.8} />
+      <VineCorner className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 rotate-180 text-champagne opacity-25 sm:h-40 sm:w-40" delay={1.1} />
 
       <AnimatePresence mode="wait">
         {phase === "shlok" ? (
@@ -75,7 +75,7 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, delay: 1.1 }}
-              className="font-hindi text-sm leading-relaxed text-ink/80 sm:text-base"
+              className="font-hindi text-base leading-relaxed text-ink/90 sm:text-lg"
             >
               वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
               <br />
@@ -90,11 +90,12 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <p className="font-detail text-[11px] uppercase tracking-[0.4em] text-champagne-dark/80">
+            {/* pl matches the trailing letter-spacing so the line sits truly centred */}
+            <p className="mb-24 w-full pl-[0.4em] text-center font-detail text-sm font-medium uppercase tracking-[0.4em] text-blush sm:mb-8 sm:text-base">
               Together with our families
             </p>
 
-            <div className="relative flex flex-col items-center gap-1">
+            <div className="relative mt-5 flex w-full flex-col items-center gap-3 text-center">
               {/* gold shimmer glowing behind the names */}
               <motion.span
                 aria-hidden
@@ -106,7 +107,7 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
               <LetterReveal
                 as="h1"
                 text={couple.bride}
-                className="font-script text-6xl text-ink sm:text-7xl"
+                className="font-brittany text-6xl text-ink sm:text-7xl"
                 stagger={0.08}
               />
               <motion.span
@@ -120,7 +121,7 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
               <LetterReveal
                 as="h1"
                 text={couple.groom}
-                className="font-script text-6xl text-ink sm:text-7xl"
+                className="font-brittany text-6xl text-ink sm:text-7xl"
                 delay={0.9}
                 stagger={0.08}
               />
@@ -133,10 +134,10 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
               className="mt-3 flex flex-col items-center gap-3"
             >
               <div className="gold-divider w-24" />
-              <p className="font-serif-alt text-lg tracking-wide text-ink/80 sm:text-xl">
+              <p className="font-serif-alt text-lg tracking-wide text-ink/90 sm:text-xl">
                 {couple.weddingDate}
               </p>
-              <p className="max-w-xs font-serif-alt text-sm italic text-ink/60 sm:text-base">
+              <p className="max-w-xs font-serif-alt text-base italic text-ink/90 sm:text-lg">
                 &ldquo;{couple.tagline}&rdquo;
               </p>
             </motion.div>
@@ -148,7 +149,7 @@ export default function HeroGate({ onOpen }: { onOpen: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.6, duration: 0.8 }}
               whileTap={{ scale: 0.96 }}
-              className="animate-pulse-glow group relative mt-6 overflow-hidden rounded-full border border-champagne px-8 py-3.5 font-detail text-xs uppercase tracking-[0.3em] text-champagne-dark"
+              className="animate-pulse-glow group relative mt-6 overflow-hidden rounded-full border border-champagne px-8 py-3.5 font-detail text-sm uppercase tracking-[0.3em] text-champagne-dark"
             >
               <span
                 className="absolute inset-0 -z-10 animate-shimmer opacity-40"

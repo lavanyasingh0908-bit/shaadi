@@ -11,15 +11,15 @@ export const families = {
   bride: {
     title: "Bride's Side",
     parents: [
-      { name: "श्री सुरेन्द्र मोहन सिंह", note: "" },
-      { name: "श्रीमती सुमिता सिंह", note: "" },
+      { name: "श्री सुरेन्द्र मोहन सिंह", note: "पिता" },
+      { name: "श्रीमती सुमिता सिंह", note: "माता" },
     ],
   },
   groom: {
     title: "Groom's Side",
     parents: [
-      { name: "श्री विवेक सिंह बैस", note: "" },
-      { name: "स्वर्गीय श्रीमती सीता सिंह बैस", note: "सदैव हमारे हृदय में" },
+      { name: "श्री विवेक सिंह बैस", note: "पिता" },
+      { name: "स्वर्गीय श्रीमती सीता सिंह बैस", note: "माता", tribute: "सदैव हमारे हृदय में" },
     ],
   },
 };
@@ -44,7 +44,7 @@ export const events = {
     date: "20 November 2026",
     time: "3:00 PM",
     venue: venue.name,
-    line: "Colours of Love",
+    line: "phoolon ki mehfil",
   },
   sangeet: {
     title: "Sangeet",
@@ -62,7 +62,8 @@ export const events = {
     address: "Behind Gomatgiri, Gandhi Nagar, Indore",
   },
   wedding: {
-    title: "Wedding Ceremony",
+    title: "शुभ arambh",
+    subtitle: "वरमाला",
     date: "21 November 2026",
     time: "5:30 PM",
     venue: venue.name,

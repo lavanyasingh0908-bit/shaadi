@@ -25,6 +25,9 @@ import { musicEngine } from "@/lib/musicEngine";
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
+  // True from the "Open Invitation" tap on, so the music icon is available
+  // during the envelope animation too.
+  const [invited, setInvited] = useState(false);
   const [showPetalBurst, setShowPetalBurst] = useState(false);
 
   useEffect(() => {
@@ -33,6 +36,13 @@ export default function Home() {
       document.body.style.overflow = "";
     };
   }, [opened]);
+
+  // Runs synchronously inside the tap, before any animation starts, so
+  // mobile browsers treat audio.play() as user-initiated.
+  function handleOpen() {
+    void musicEngine.play();
+    setInvited(true);
+  }
 
   function handleIntroComplete() {
     setOpened(true);
@@ -43,8 +53,8 @@ export default function Home() {
   return (
     <OpenedContext.Provider value={opened}>
       {/* Music never autoplays: it starts inside the "Open Invitation" tap. */}
-      <IntroExperience onOpen={() => musicEngine.play()} onComplete={handleIntroComplete} />
-      <MusicPlayer visible={opened} />
+      <IntroExperience onOpen={handleOpen} onComplete={handleIntroComplete} />
+      <MusicPlayer visible={invited} />
       <ScrollLotus visible={opened} />
       {opened && <AmbientLayer />}
       <SparkleCursor />

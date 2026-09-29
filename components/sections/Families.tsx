@@ -20,46 +20,81 @@ function Heart({ className = "" }: { className?: string }) {
   );
 }
 
-function FamilyColumn({
-  title,
-  members,
-  align,
-}: {
-  title: string;
-  members: { name: string; note: string }[];
-  align: "left" | "right";
-}) {
+type Member = { name: string; note: string; tribute?: string };
+
+function MemberBlock({ m }: { m: Member }) {
   return (
-    <Reveal mode={align === "left" ? "slide-right" : "slide-left"} className="flex-1">
-      <div className={`flex flex-col gap-5 ${align === "left" ? "items-end text-right" : "items-start text-left"}`}>
-        <p className="font-detail text-[11px] uppercase tracking-[0.4em] text-champagne-dark">{title}</p>
-        <div className="gold-divider w-16" />
-        {members.map((m) => (
-          <div key={m.name}>
-            <p className="font-hindi text-lg font-semibold leading-snug text-ink sm:text-2xl">{m.name}</p>
-            {m.note && (
-              <p className="mt-1 font-hindi text-sm font-light text-champagne-dark">({m.note})</p>
-            )}
-          </div>
-        ))}
+    <div>
+      <p className="font-hindi text-lg font-semibold leading-snug text-ink sm:text-2xl">{m.name}</p>
+      {m.note && <p className="mt-1 font-hindi text-base font-light text-champagne-dark">({m.note})</p>}
+      {m.tribute && (
+        <p className="mt-0.5 font-hindi text-sm font-light italic text-champagne-light/75">({m.tribute})</p>
+      )}
+    </div>
+  );
+}
+
+// literal class names so Tailwind generates them
+const MEMBER_ROWS = ["row-start-3", "row-start-4", "row-start-5", "row-start-6"];
+
+/**
+ * Both sides share one grid, so each heading, divider and parent sits on
+ * exactly the same row as its counterpart, whatever the text lengths.
+ */
+function FamilyGrid() {
+  const sides = [
+    { side: families.bride, cell: "items-end text-right", mode: "slide-right" as const, col: "col-start-1" },
+    { side: families.groom, cell: "items-start text-left", mode: "slide-left" as const, col: "col-start-3" },
+  ];
+  const rows = Math.max(families.bride.parents.length, families.groom.parents.length);
+
+  return (
+    <div
+      className="relative mt-14 grid w-full max-w-4xl grid-cols-[1fr_auto_1fr] gap-x-6 gap-y-5 sm:gap-x-14"
+    >
+      {sides.map(({ side, cell, mode, col }) => [
+        <Reveal key={`${side.title}-t`} mode={mode} className={`${col} row-start-1 flex flex-col ${cell}`}>
+          <p className="font-detail text-[13px] uppercase tracking-[0.4em] text-champagne-dark">{side.title}</p>
+        </Reveal>,
+        <Reveal key={`${side.title}-d`} mode={mode} className={`${col} row-start-2 flex flex-col ${cell}`}>
+          <div className="gold-divider w-16" />
+        </Reveal>,
+        ...side.parents.map((m, i) => (
+          <Reveal
+            key={m.name}
+            mode={mode}
+            delay={0.1 * (i + 1)}
+            className={`${col} ${MEMBER_ROWS[i]} flex flex-col ${cell}`}
+          >
+            <MemberBlock m={m} />
+          </Reveal>
+        )),
+      ])}
+
+      <div
+        className="col-start-2 row-start-1 flex flex-col items-center justify-center gap-3 self-center text-champagne"
+        style={{ gridRowEnd: rows + 3 }}
+      >
+        <Arch className="h-28 w-20 sm:h-40 sm:w-28" />
+        <Heart className="h-6 w-6 text-blush sm:h-7 sm:w-7" />
       </div>
-    </Reveal>
+    </div>
   );
 }
 
 export default function Families() {
   return (
-    <section className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ivory px-6 py-24">
+    <section className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-luxe px-6 py-24">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={IMG.floral}
         alt=""
         aria-hidden
         loading="lazy"
-        className="floral-sway pointer-events-none absolute -bottom-8 -right-8 w-44 opacity-60 sm:w-72"
+        className="floral-sway pointer-events-none absolute -bottom-8 -right-8 w-44 opacity-25 sm:w-72"
       />
       <Reveal mode="fade">
-        <p className="text-center font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">
+        <p className="text-center font-detail text-sm uppercase tracking-[0.5em] text-champagne-dark">
           With The Blessings Of Our Families
         </p>
       </Reveal>
@@ -69,16 +104,7 @@ export default function Families() {
         </h2>
       </Reveal>
 
-      <div className="relative mt-14 flex w-full max-w-4xl items-center justify-center gap-6 sm:gap-14">
-        <FamilyColumn title={families.bride.title} members={families.bride.parents} align="left" />
-
-        <div className="flex flex-col items-center gap-3 text-champagne">
-          <Arch className="h-28 w-20 sm:h-40 sm:w-28" />
-          <Heart className="h-6 w-6 text-blush sm:h-7 sm:w-7" />
-        </div>
-
-        <FamilyColumn title={families.groom.title} members={families.groom.parents} align="right" />
-      </div>
+      <FamilyGrid />
     </section>
   );
 }

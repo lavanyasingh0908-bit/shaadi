@@ -56,7 +56,7 @@ export default function FinalMessage() {
           <h2 className="font-display text-5xl text-pearl sm:text-8xl">You Are Invited</h2>
         </Reveal>
         <Reveal mode="fade" delay={0.5}>
-          <p className="font-serif-alt text-lg italic text-pearl/80 sm:text-2xl">With Love</p>
+          <p className="font-serif-alt text-lg italic text-pearl/90 sm:text-2xl">With Love</p>
         </Reveal>
         <Reveal mode="fade-up" delay={0.7}>
           <p className="font-script text-4xl text-champagne sm:text-5xl">Karchuli&rsquo;s Family</p>

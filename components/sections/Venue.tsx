@@ -20,7 +20,7 @@ function Pin({ className = "" }: { className?: string }) {
 
 export default function Venue() {
   return (
-    <section className="relative w-full overflow-hidden bg-beige py-24">
+    <section className="relative w-full overflow-hidden bg-luxe-reverse py-24">
       {/* floating lotus */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -28,7 +28,7 @@ export default function Venue() {
         alt=""
         aria-hidden
         loading="lazy"
-        className="animate-float-slow pointer-events-none absolute right-[6%] top-10 w-16 opacity-80 sm:w-24"
+        className="animate-float-slow pointer-events-none absolute right-[6%] top-10 w-16 opacity-25 sm:w-24"
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -36,12 +36,12 @@ export default function Venue() {
         alt=""
         aria-hidden
         loading="lazy"
-        className="animate-float-slower pointer-events-none absolute bottom-16 left-[4%] w-12 opacity-60 sm:w-16"
+        className="animate-float-slower pointer-events-none absolute bottom-16 left-[4%] w-12 opacity-25 sm:w-16"
       />
 
       <div className="px-6 text-center">
         <Reveal mode="fade">
-          <p className="font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">
+          <p className="font-detail text-sm uppercase tracking-[0.5em] text-champagne-dark">
             Where To Find Us
           </p>
         </Reveal>
@@ -54,7 +54,7 @@ export default function Venue() {
         {/* Left: cinematic venue image */}
         <Reveal
           mode="scale"
-          className="relative w-full overflow-hidden rounded-[32px] border-4 border-pearl shadow-2xl shadow-black/10"
+          className="relative w-full overflow-hidden rounded-[32px] border border-champagne/60 shadow-2xl shadow-black/40"
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[16/11] lg:aspect-[4/5]">
             <div data-parallax="0.1" className="absolute inset-x-0 -inset-y-[6%]">
@@ -80,7 +80,7 @@ export default function Venue() {
 
           <Reveal mode="fade-up" delay={0.25} className="flex flex-col gap-0.5">
             {venue.addressLines.slice(1).map((line) => (
-              <p key={line} className="font-serif-alt text-base text-ink/65 sm:text-lg">
+              <p key={line} className="font-serif-alt text-base text-ink/90 sm:text-lg">
                 {line}
               </p>
             ))}
@@ -91,7 +91,7 @@ export default function Venue() {
               href={venue.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-2xl border border-champagne/70 bg-pearl shadow-[0_18px_40px_-16px_rgba(44,36,32,0.35)]"
+              className="group relative block overflow-hidden luxe-card"
               aria-label={`Open ${venue.name} in Google Maps`}
             >
               <div className="aspect-[16/9] w-full overflow-hidden">
@@ -121,7 +121,7 @@ export default function Venue() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="animate-pulse-glow inline-flex items-center gap-2 rounded-full border border-champagne bg-pearl px-7 py-3 font-detail text-xs uppercase tracking-[0.3em] text-champagne-dark shadow-md"
+              className="animate-pulse-glow inline-flex items-center gap-2 rounded-full border border-champagne bg-wine/60 backdrop-blur-sm px-7 py-3 font-detail text-sm uppercase tracking-[0.3em] text-champagne-dark shadow-md"
             >
               <span aria-hidden>📍</span> View Location
             </motion.a>

@@ -13,7 +13,7 @@ const LIGHTS = [
 ];
 
 /** Soft, out-of-focus floating lights. Pure CSS animation (compositor only). */
-export default function Bokeh({ className = "", tint = "214,180,122" }: { className?: string; tint?: string }) {
+export default function Bokeh({ className = "", tint = "212,175,122" }: { className?: string; tint?: string }) {
   return (
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden>
       {LIGHTS.map((b, i) => (

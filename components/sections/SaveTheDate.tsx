@@ -22,7 +22,7 @@ const stars = [
 
 export default function SaveTheDate() {
   return (
-    <section className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-beige px-6 py-24 text-center">
+    <section className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-luxe-reverse px-6 py-24 text-center">
       <FloralBottom />
       {stars.map((s, i) => (
         <motion.span
@@ -51,7 +51,7 @@ export default function SaveTheDate() {
       </Reveal>
 
       <Reveal mode="fade" delay={0.2}>
-        <p className="mt-6 font-detail text-xs uppercase tracking-[0.5em] text-champagne-dark">
+        <p className="mt-6 font-detail text-sm uppercase tracking-[0.5em] text-champagne-dark">
           Save The Date
         </p>
       </Reveal>
@@ -67,7 +67,7 @@ export default function SaveTheDate() {
       </Reveal>
 
       <Reveal mode="fade" delay={0.6}>
-        <p className="mt-4 max-w-md font-serif-alt text-sm text-ink/60 sm:text-base">
+        <p className="mt-4 max-w-md font-serif-alt text-base text-ink/90 sm:text-lg">
           Two days of colour, music and sacred rituals as we begin our forever.
         </p>
       </Reveal>
@@ -84,7 +84,7 @@ function FloralBottom() {
         alt=""
         aria-hidden
         loading="lazy"
-        className="floral-sway pointer-events-none absolute -bottom-6 -right-6 w-40 opacity-70 sm:w-64"
+        className="floral-sway pointer-events-none absolute -bottom-6 -right-6 w-40 opacity-25 sm:w-64"
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -92,7 +92,7 @@ function FloralBottom() {
         alt=""
         aria-hidden
         loading="lazy"
-        className="floral-sway pointer-events-none absolute -bottom-6 -left-6 w-40 -scale-x-100 opacity-70 sm:w-64"
+        className="floral-sway pointer-events-none absolute -bottom-6 -left-6 w-40 -scale-x-100 opacity-25 sm:w-64"
       />
     </>
   );
@@ -102,7 +102,7 @@ function FlipCard({ label }: { label: string }) {
   return (
     <div style={{ perspective: 800 }}>
       <motion.div
-        className="flex h-20 w-16 items-center justify-center rounded-lg border border-champagne/60 bg-pearl font-display text-4xl text-ink shadow-lg shadow-champagne/10 sm:h-28 sm:w-24 sm:text-6xl"
+        className="flex h-20 w-16 items-center justify-center rounded-lg luxe-card font-display text-4xl text-ink sm:h-28 sm:w-24 sm:text-6xl"
         initial={{ rotateX: 90, opacity: 0 }}
         whileInView={{ rotateX: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.6 }}

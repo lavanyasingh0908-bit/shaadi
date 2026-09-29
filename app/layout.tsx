@@ -5,6 +5,7 @@ import {
   DM_Sans,
   Great_Vibes,
   Noto_Serif_Devanagari,
+  Rozha_One,
 } from "next/font/google";
 import "./globals.css";
 import "./cinematic.css";
@@ -40,6 +41,13 @@ const notoDevanagari = Noto_Serif_Devanagari({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+// royal Devanagari display face for the event headings
+const rozha = Rozha_One({
+  variable: "--font-royal",
+  subsets: ["devanagari", "latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Sejal Weds Himanshu | 21 November 2026",
   description:
@@ -51,14 +59,14 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: "cover",
-  themeColor: "#faf6f0",
+  themeColor: "#3b0f1f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${bodoni.variable} ${dmSans.variable} ${greatVibes.variable} ${notoDevanagari.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${bodoni.variable} ${dmSans.variable} ${greatVibes.variable} ${notoDevanagari.variable} ${rozha.variable} h-full antialiased`}
     >
       <head>
         <link rel="preload" as="image" href="/images/opt/hero.webp" type="image/webp" fetchPriority="high" />

@@ -6,7 +6,7 @@ import gsap from "gsap";
 import Lotus from "@/components/icons/Lotus";
 import { IMG } from "@/lib/assets";
 
-const PAPER = "linear-gradient(160deg, #fffdfc 0%, #faf6f0 55%, #efe3d3 100%)";
+const PAPER = "linear-gradient(160deg, #8c3a4a 0%, #722f45 55%, #5a1e2b 100%)";
 
 /**
  * Luxury envelope opening (~3.6s):
@@ -62,7 +62,7 @@ export default function EnvelopeReveal({ onComplete }: { onComplete: () => void 
     <div
       ref={root}
       className="fixed inset-0 z-[60] flex items-center justify-center overflow-hidden"
-      style={{ background: "radial-gradient(circle at 50% 40%, #f4dad6 0%, #eedfd5 55%, #e6d2b4 100%)" }}
+      style={{ background: "radial-gradient(circle at 50% 40%, #8c3a4a 0%, #5a1e2b 55%, #3b0f1f 100%)" }}
     >
       {/* palace watercolour backdrop */}
       <div className="env-palace absolute inset-0 opacity-0" style={{ transform: "scale(1.08)" }}>
@@ -74,34 +74,34 @@ export default function EnvelopeReveal({ onComplete }: { onComplete: () => void 
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 50%, rgba(250,246,240,0.78) 0%, rgba(250,246,240,0.35) 55%, rgba(250,246,240,0.1) 100%)",
+              "radial-gradient(ellipse at 50% 50%, rgba(90,30,43,0.5) 0%, rgba(90,30,43,0.5) 55%, rgba(59,15,31,0.6) 100%)",
           }}
         />
       </div>
 
       <div className="relative">
-        <div className="env-shadow absolute -bottom-6 left-1/2 h-6 w-[85%] -translate-x-1/2 rounded-[50%] bg-black/15 blur-md" />
+        <div className="env-shadow absolute -bottom-6 left-1/2 h-6 w-[85%] -translate-x-1/2 rounded-[50%] bg-black/40 blur-md" />
 
         <div className="env-stage relative h-[220px] w-[320px] sm:h-[260px] sm:w-[380px]">
           {/* inside / back of the envelope */}
           <div
             className="absolute inset-0 rounded-md border border-champagne/50"
             style={{
-              background: "linear-gradient(180deg,#e9dac6 0%,#f3e8da 60%)",
-              boxShadow: "inset 0 10px 24px rgba(120,90,50,0.18)",
+              background: "linear-gradient(180deg,#5a1e2b 0%,#722f45 60%)",
+              boxShadow: "inset 0 10px 24px rgba(20,2,6,0.45)",
               zIndex: 0,
             }}
           />
 
           {/* the invitation card */}
           <div
-            className="env-card absolute inset-x-[6%] bottom-[5%] top-[7%] flex flex-col items-center justify-center gap-2 rounded-sm border border-champagne/60 bg-ivory text-center shadow-[0_8px_24px_rgba(44,36,32,0.15)]"
+            className="env-card absolute inset-x-[6%] bottom-[5%] top-[7%] flex flex-col items-center justify-center gap-2 rounded-sm border border-champagne/70 bg-pearl text-center shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
             style={{ zIndex: 2 }}
           >
             <div className="absolute inset-2 rounded-[2px] border border-champagne/30" />
-            <Lotus className="h-6 w-6 text-champagne-dark" />
-            <p className="font-script text-2xl text-ink">Sejal &amp; Himanshu</p>
-            <p className="font-detail text-[10px] uppercase tracking-[0.3em] text-champagne-dark">
+            <Lotus className="h-6 w-6 text-rosewood" />
+            <p className="font-script text-2xl text-maroon">Sejal &amp; Himanshu</p>
+            <p className="font-detail text-xs uppercase tracking-[0.3em] text-rosewood">
               21 · 11 · 2026
             </p>
           </div>
@@ -110,21 +110,21 @@ export default function EnvelopeReveal({ onComplete }: { onComplete: () => void 
           <div className="absolute inset-0 overflow-hidden rounded-md" style={{ zIndex: 3 }}>
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(90deg,#f3eadf,#fbf6ef)", clipPath: "polygon(0 0, 52% 56%, 0 100%)" }}
+              style={{ background: "linear-gradient(90deg,#722f45,#8c3a4a)", clipPath: "polygon(0 0, 52% 56%, 0 100%)" }}
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(270deg,#f3eadf,#fbf6ef)", clipPath: "polygon(100% 0, 48% 56%, 100% 100%)" }}
+              style={{ background: "linear-gradient(270deg,#722f45,#8c3a4a)", clipPath: "polygon(100% 0, 48% 56%, 100% 100%)" }}
             />
             <div
               className="absolute inset-0"
               style={{
                 background: PAPER,
                 clipPath: "polygon(0 100%, 50% 46%, 100% 100%)",
-                filter: "drop-shadow(0 -2px 3px rgba(120,90,50,0.12))",
+                filter: "drop-shadow(0 -2px 3px rgba(20,2,6,0.35))",
               }}
             />
-            <div className="absolute inset-0 rounded-md border border-champagne/60" />
+            <div className="absolute inset-0 rounded-md border border-champagne/70" />
           </div>
 
           {/* top flap */}
@@ -135,9 +135,9 @@ export default function EnvelopeReveal({ onComplete }: { onComplete: () => void 
             <div
               className="absolute inset-0"
               style={{
-                background: "linear-gradient(180deg,#fffdfc 0%,#f7ece2 70%,#f1ddd5 100%)",
+                background: "linear-gradient(180deg,#9a4656 0%,#8c3a4a 70%,#722f45 100%)",
                 clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-                filter: "drop-shadow(0 3px 4px rgba(120,90,50,0.18))",
+                filter: "drop-shadow(0 3px 4px rgba(20,2,6,0.4))",
               }}
             />
           </div>
@@ -152,8 +152,8 @@ export default function EnvelopeReveal({ onComplete }: { onComplete: () => void 
                 key={side}
                 className={`seal-${side} absolute inset-0 flex items-center justify-center rounded-full text-pearl`}
                 style={{
-                  background: "radial-gradient(circle at 35% 30%, #c89a5a 0%, #a97f45 55%, #7d5a2c 100%)",
-                  boxShadow: "0 4px 10px rgba(80,50,20,0.35), inset 0 2px 3px rgba(255,240,210,0.35)",
+                  background: "radial-gradient(circle at 35% 30%, #ecd3a6 0%, #d4af7a 55%, #9c7a48 100%)",
+                  boxShadow: "0 4px 10px rgba(30,4,10,0.45), inset 0 2px 3px rgba(255,240,210,0.35)",
                   clipPath:
                     side === "left"
                       ? "polygon(0 0, 55% 0, 45% 30%, 58% 52%, 44% 75%, 52% 100%, 0 100%)"
@@ -189,7 +189,7 @@ export default function EnvelopeReveal({ onComplete }: { onComplete: () => void 
               tlRef.current?.timeScale(5);
               setCanSkip(false);
             }}
-            className="safe-bottom absolute bottom-8 right-6 rounded-full border border-champagne/60 bg-pearl/70 px-5 py-2 font-detail text-[10px] uppercase tracking-[0.3em] text-champagne-dark backdrop-blur-sm"
+            className="safe-bottom absolute bottom-8 right-6 rounded-full border border-champagne/60 bg-wine/60 px-5 py-2 font-detail text-xs uppercase tracking-[0.3em] text-champagne-dark backdrop-blur-sm"
           >
             Skip
           </motion.button>
