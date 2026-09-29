@@ -128,9 +128,6 @@ export default function EventBaraat() {
         }}
       />
 
-      {/* subtle horse silhouette watermark */}
-      <Horse className="pointer-events-none absolute left-1/2 top-1/2 h-[48vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 text-champagne opacity-[0.08]" />
-
       {/* dhol & shehnai, visual only */}
       <DholBeat className="left-[8%] top-[22%]" />
       <DholBeat className="right-[8%] top-[62%]" />

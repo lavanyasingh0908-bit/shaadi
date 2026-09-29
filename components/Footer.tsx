@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="relative flex flex-col items-center gap-2">
         <p className="font-detail text-[13px] uppercase tracking-[0.4em] text-champagne-dark">Contact</p>
         <div className="flex flex-col items-center gap-1 sm:flex-row sm:gap-5">
-          {["9617638439", "9131254090"].map((n, i) => (
+          {["8103096761", "8085165964"].map((n, i) => (
             <span key={n} className="flex items-center gap-5">
               {i > 0 && <span className="hidden h-4 w-px bg-champagne/50 sm:block" aria-hidden />}
               <a

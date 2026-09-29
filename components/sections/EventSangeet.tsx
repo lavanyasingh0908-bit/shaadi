@@ -109,7 +109,7 @@ export default function EventSangeet() {
         <Reveal mode="blur" duration={1.2} delay={0.1}>
           <div className="flex flex-col items-center gap-1">
             <h2 className="gold-shimmer-text animate-shimmer font-royal text-5xl leading-[1.35] sm:text-7xl">
-              नाच-ए-मोहब्बत
+              थिरकते कदम
             </h2>
             <p className="flex items-center gap-3 font-script text-3xl text-champagne-light sm:text-4xl">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-champagne sm:w-12" aria-hidden />

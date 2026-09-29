@@ -76,7 +76,7 @@ export default function EventHaldi() {
         </Reveal>
         <Reveal mode="fade" delay={0.35}>
           <p
-            className="px-2 py-2 font-script text-6xl leading-[1.25] [filter:drop-shadow(0_2px_6px_rgba(255,255,255,0.6))] sm:text-8xl"
+            className="px-2 py-2 font-royal text-6xl leading-[1.4] [filter:drop-shadow(0_2px_6px_rgba(255,255,255,0.6))] sm:text-8xl"
             style={{
               background: "linear-gradient(90deg,#1f5a3a 0%,#2e7d4f 30%,#e0568a 62%,#c2185b 100%)",
               WebkitBackgroundClip: "text",

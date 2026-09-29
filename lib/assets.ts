@@ -21,7 +21,7 @@ export const IMG = {
   bwLove: opt("bw-love"),
   shivBlessing: opt("shiv-blessing"),
   loveStory: opt("love-story"),
-  venue: [opt("venue"), "/images/venue.jpg", opt("palace-bg")],
+  venue: "/images/opt/venue.jpeg",
   mapPreview: [opt("map-preview"), "/images/map-preview.png"],
 
   ganesh: opt("ganesh-line"),

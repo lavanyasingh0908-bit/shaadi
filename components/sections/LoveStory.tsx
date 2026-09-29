@@ -38,7 +38,7 @@ function StoryCard({ moment, index: i }: { moment: Moment; index: number }) {
             <div className="h-full w-full transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]">
               <Photo
                 src={moment.image}
-                alt={moment.caption}
+                alt="Our love story"
                 tone="bw"
                 className="story-bw h-full w-full object-cover"
               />
@@ -105,7 +105,7 @@ export default function LoveStory() {
         className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 sm:gap-10 sm:px-[10vw] lg:mt-10 lg:w-max lg:snap-none lg:items-start lg:overflow-visible lg:pb-0"
       >
         {loveStoryMoments.map((moment, i) => (
-          <StoryCard key={moment.caption} moment={moment} index={i} />
+          <StoryCard key={i} moment={moment} index={i} />
         ))}
       </div>
 

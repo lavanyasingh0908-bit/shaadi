@@ -44,7 +44,7 @@ export const events = {
     date: "20 November 2026",
     time: "3:00 PM",
     venue: venue.name,
-    line: "phoolon ki mehfil",
+    line: "फूलों की बारिश",
   },
   sangeet: {
     title: "Sangeet",
@@ -72,13 +72,12 @@ export const events = {
 };
 
 export const loveStoryMoments = [
-  { caption: "Our Beginning", image: IMG.casual, tall: false },
-  { caption: "You & Me", image: IMG.coupleMain, tall: true },
-  { caption: "Forever Starts Here", image: IMG.foreheadKiss, tall: false },
-  { caption: "My Favourite Place Is You", image: IMG.kiss, tall: true },
-  { caption: "Every Step With You", image: IMG.stairs, tall: true },
-  { caption: "One Lifetime Isn't Enough", image: IMG.hero, tall: false },
-  { caption: "Always & Forever", image: IMG.sv, tall: true },
+  { image: IMG.sv, tall: false },
+  { image: IMG.hero, tall: true },
+  { image: IMG.kiss, tall: false },
+  { image: IMG.casual, tall: true },
+  { image: IMG.stairs, tall: true },
+  { image: IMG.foreheadKiss, tall: false },
 ];
 
 export const music = {
