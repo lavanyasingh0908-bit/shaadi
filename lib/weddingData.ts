@@ -43,7 +43,6 @@ export const events = {
     title: "Carnival & Haldi",
     date: "20 November 2026",
     time: "3:00 PM",
-    venue: venue.name,
     line: "फूलों की बारिश",
   },
   sangeet: {
@@ -66,7 +65,6 @@ export const events = {
     subtitle: "वरमाला",
     date: "21 November 2026",
     time: "5:30 PM",
-    venue: venue.name,
     line: "Sacred • Eternal • Ours",
   },
 };

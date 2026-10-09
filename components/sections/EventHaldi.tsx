@@ -69,14 +69,11 @@ export default function EventHaldi() {
 
       <div className="relative z-10 flex flex-col items-center gap-5">
         <Reveal mode="scale">
-          <p className="font-hindi text-lg font-semibold tracking-[0.2em] sm:text-xl text-[#9A6A1C]">प्रथम उत्सव</p>
+          <p className="font-hindi text-lg font-semibold tracking-[0.2em] text-[#9A6A1C] sm:text-xl">प्रथम उत्सव</p>
         </Reveal>
-        <Reveal mode="fade-up" delay={0.15}>
-          <h2 className="font-bodoni text-3xl text-[#1F5A3A] sm:text-5xl">{events.haldi.title}</h2>
-        </Reveal>
-        <Reveal mode="fade" delay={0.35}>
-          <p
-            className="px-2 py-2 font-royal text-4xl leading-[1.4] [filter:drop-shadow(0_2px_6px_rgba(255,255,255,0.6))] sm:text-6xl"
+        <Reveal mode="blur" duration={1.2} delay={0.1}>
+          <h2
+            className="mb-2 px-2 py-2 font-royal text-6xl leading-[1.35] [filter:drop-shadow(0_2px_6px_rgba(255,255,255,0.6))] sm:text-8xl"
             style={{
               background: "linear-gradient(90deg,#1f5a3a 0%,#2e7d4f 30%,#e0568a 62%,#c2185b 100%)",
               WebkitBackgroundClip: "text",
@@ -85,16 +82,23 @@ export default function EventHaldi() {
             }}
           >
             {events.haldi.line}
+          </h2>
+          <p className="flex items-center justify-center gap-4 font-bodoni text-2xl text-[#1F5A3A] sm:gap-5 sm:text-4xl">
+            <span className="h-px w-10 bg-[#1F5A3A]/60 sm:w-16" aria-hidden />
+            {events.haldi.title}
+            <span className="h-px w-10 bg-[#1F5A3A]/60 sm:w-16" aria-hidden />
+          </p>
+        </Reveal>
+        <Reveal mode="fade" delay={0.35}>
+          <p className="font-detail text-sm uppercase tracking-[0.25em] text-[#9A6A1C] sm:text-base">
+            Music • Dance • Family • Forever
           </p>
         </Reveal>
         <Reveal mode="fade-up" delay={0.5}>
-          <div className="mt-4 flex flex-col items-center gap-1">
+          <div className="mt-2 flex flex-col items-center gap-1">
+            <span className="mb-3 h-px w-20 bg-gradient-to-r from-transparent via-[#E0568A] to-transparent" />
             <p className="font-serif-alt text-xl font-semibold text-[#1F5A3A] sm:text-2xl">{events.haldi.date}</p>
             <p className="font-serif-alt text-lg font-semibold text-[#C2185B]">{events.haldi.time}</p>
-            <span className="my-2 h-px w-20 bg-gradient-to-r from-transparent via-[#E0568A] to-transparent" />
-            <p className="font-detail text-sm font-medium uppercase tracking-[0.2em] text-[#1F5A3A]">
-              {events.haldi.venue}
-            </p>
           </div>
         </Reveal>
       </div>

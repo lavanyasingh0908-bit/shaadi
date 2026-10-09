@@ -161,13 +161,17 @@ export default function EventBaraat() {
         </div>
 
         <Reveal mode="scale">
-          <p className="font-hindi text-lg font-semibold tracking-[0.2em] sm:text-xl text-champagne">तृतीय उत्सव</p>
+          <p className="font-detail text-xs font-semibold uppercase tracking-[0.4em] text-champagne sm:text-sm">
+            Carnival &amp; Haldi
+          </p>
         </Reveal>
 
         <Reveal mode="blur" duration={1.2} delay={0.1}>
-          <p className="gold-shimmer-text animate-shimmer mb-1 font-royal text-6xl leading-[1.35] sm:text-8xl">शाही सवारी</p>
-          <h2 className="gold-shimmer-text animate-shimmer font-hindi text-5xl font-semibold leading-tight sm:text-7xl">
+          <p className="gold-shimmer-text animate-shimmer mb-2 font-royal text-6xl leading-[1.35] sm:text-8xl">फूलों की बारिश</p>
+          <h2 className="flex items-center justify-center gap-4 font-hindi text-3xl font-semibold leading-tight text-champagne sm:gap-5 sm:text-4xl">
+            <span className="h-px w-10 bg-champagne/70 sm:w-16" aria-hidden />
             {b.title}
+            <span className="h-px w-10 bg-champagne/70 sm:w-16" aria-hidden />
           </h2>
         </Reveal>
         <Reveal mode="fade" delay={0.3}>
