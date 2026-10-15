@@ -66,6 +66,7 @@ export const events = {
     date: "21 November 2026",
     time: "5:30 PM",
     line: "Sacred • Eternal • Ours",
+    venue: "Heaven's Feel Farm, Indore",
   },
 };
 
