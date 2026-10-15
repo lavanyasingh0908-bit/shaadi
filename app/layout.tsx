@@ -17,11 +17,6 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const dmSans = DM_Sans({
   variable: "--font-dmsans",
@@ -66,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${bodoni.variable} ${dmSans.variable} ${greatVibes.variable} ${notoDevanagari.variable} ${rozha.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${dmSans.variable} ${greatVibes.variable} ${notoDevanagari.variable} ${rozha.variable} h-full antialiased`}
     >
       <head>
         <link rel="preload" as="image" href="/images/opt/hero.webp" type="image/webp" fetchPriority="high" />
