@@ -54,7 +54,18 @@ export default function HeroPhoto() {
       <div className="relative z-10 flex w-full flex-col items-center gap-8 pb-20 text-center sm:pb-28">
         <Reveal mode="blur" duration={1.4}>
           <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-champagne to-transparent" />
-          <p className="max-w-md px-5 font-hindi text-[1.75rem] font-medium leading-[1.8] tracking-wide text-champagne-light [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] sm:max-w-3xl sm:text-[2.6rem] sm:leading-[1.7]">
+          <p
+            className="max-w-md px-5 font-hindi text-[1.75rem] font-medium leading-[1.8] tracking-wide text-champagne-light [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] sm:max-w-3xl sm:text-[2.6rem] sm:leading-[1.7]"
+            style={{
+              fontFamily: "var(--font-dmsans)",
+              fontWeight: 300,
+              fontSize: "1.75rem",
+              lineHeight: 1.8,
+              letterSpacing: "0.02em",
+              color: "#D4AF7A",
+              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+            }}
+          >
            A new chapter begins, 
             <br />
             with two hearts choosing forever।
