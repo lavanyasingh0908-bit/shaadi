@@ -55,9 +55,9 @@ export default function HeroPhoto() {
         <Reveal mode="blur" duration={1.4}>
           <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-champagne to-transparent" />
           <p className="max-w-md px-5 font-hindi text-[1.75rem] font-medium leading-[1.8] tracking-wide text-champagne-light [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] sm:max-w-3xl sm:text-[2.6rem] sm:leading-[1.7]">
-           सज रही है एक नई दास्ताँ
+           A new chapter begins, 
             <br />
-            जहाँ दो दिलों ने चुना है उम्रभर का साथ।
+            with two hearts choosing forever।
           </p>
           <div className="mx-auto mt-6 h-px w-24 bg-gradient-to-r from-transparent via-champagne to-transparent" />
         </Reveal>
