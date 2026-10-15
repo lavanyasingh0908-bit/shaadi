@@ -57,7 +57,7 @@ export default function HeroPhoto() {
           <p
             className="max-w-md px-5 font-hindi text-[1.75rem] font-medium leading-[1.8] tracking-wide text-champagne-light [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] sm:max-w-3xl sm:text-[2.6rem] sm:leading-[1.7]"
             style={{
-              fontFamily: "var(--font-cormorant)",
+              fontFamily: "var(--font-vibes)",
               fontWeight: 300,
                fontStyle: "italic",
               fontSize: "1.75rem",
