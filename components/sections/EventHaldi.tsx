@@ -91,7 +91,7 @@ export default function EventHaldi() {
         </Reveal>
         <Reveal mode="fade" delay={0.35}>
           <p className="font-detail text-sm uppercase tracking-[0.25em] text-[#9A6A1C] sm:text-base">
-            Music • Dance • Family • Forever
+            Drama • Colors • Family • Forever
           </p>
         </Reveal>
         <Reveal mode="fade-up" delay={0.5}>
