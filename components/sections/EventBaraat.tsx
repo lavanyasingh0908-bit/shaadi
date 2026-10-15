@@ -162,7 +162,7 @@ export default function EventBaraat() {
 
         <Reveal mode="scale">
           <p className="font-detail text-xs font-semibold uppercase tracking-[0.4em] text-champagne sm:text-sm">
-            तृतीय उत्सव &amp; 
+            तृतीय उत्सव ; 
           </p>
         </Reveal>
 
